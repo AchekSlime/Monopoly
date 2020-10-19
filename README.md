@@ -1,1 +1,1 @@
-А корчу лицо в рожицу ахегао
+Why you always in a mood? Fuckin 'round, actin' brand new
