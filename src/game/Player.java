@@ -3,8 +3,8 @@ package game;
 import game.map.Map;
 
 public class Player {
-    private int balance;
-    private int spentMoney;
+    private double balance;
+    private double spentMoney;
     private boolean isBot;
 
     private Map map;
@@ -14,7 +14,7 @@ public class Player {
         curIndexOnMap = map.getNextIndex(curIndexOnMap, steps);
     }
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
@@ -22,15 +22,15 @@ public class Player {
         return curIndexOnMap;
     }
 
-    public void reduceBalance(int amount) {
+    public void reduceBalance(double amount) {
 
     }
 
-    public void increaseBalance(int amount) {
+    public void increaseBalance(double amount) {
 
     }
 
-    public int getSpentMoney() {
+    public double getSpentMoney() {
         return spentMoney;
     }
 

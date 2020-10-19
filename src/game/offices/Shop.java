@@ -1,19 +1,23 @@
 package game.offices;
 
 import game.Player;
+import game.utils.WriterReader;
 
 public class Shop {
-    private final int improvementCoeff;
-    private final int compensationCoeff;
+    private final double improvementCoeff;
+    private final double compensationCoeff;
+    private WriterReader writerReader;
 
     private Player owner;
-    private int compensation;
-    private int value;
+    private double K;
+    private int N;
 
-//    public Shop(int improvementCoeff, int compensationCoeff) {
-//        this.improvementCoeff = improvementCoeff;
-//        this.compensationCoeff = compensationCoeff;
-//    }
+    public Shop(double improvementCoeff, double compensationCoeff, int N, double K, WriterReader writerReader) {
+        this.improvementCoeff = improvementCoeff;
+        this.compensationCoeff = compensationCoeff;
+        this.writerReader = writerReader;
+    }
+
 
     public void process(Player visitor) {
         if (owner == null) {
@@ -34,7 +38,7 @@ public class Shop {
     }
 
     public void buyShop(Player buyer) {
-        buyer.reduceBalance(value);
+        buyer.reduceBalance(N);
         owner = buyer;
     }
 
@@ -43,7 +47,7 @@ public class Shop {
     }
 
     public void processCustomer(Player customer) {
-        customer.reduceBalance(compensation);
+        customer.reduceBalance(K);
     }
 
     public void tryUpgradeShop() {
@@ -58,11 +62,11 @@ public class Shop {
     }
 
     public void increaseValue() {
-        value += improvementCoeff * value;
+        N += improvementCoeff * N;
     }
 
     public void increaseCompensation() {
-        compensation += compensationCoeff * compensation;
+        K += compensationCoeff * K;
     }
 
 }

@@ -1,31 +1,31 @@
 package game.offices;
 
 import game.Player;
+import game.utils.WriterReader;
 
 public class Bank {
-    private int playerDebt;
-    private final int creditCoeff;
-    private final int debtCoeff;
+    private double playerDebt = 0;
+    private final double creditCoeff;
+    private final double debtCoeff;
+    private WriterReader writerReader;
 
-    public Bank(int creditCoeff, int debtCoeff) {
+    public Bank(double creditCoeff, double debtCoeff, WriterReader writerReader) {
         this.creditCoeff = creditCoeff;
         this.debtCoeff = debtCoeff;
+        this.writerReader = writerReader;
     }
 
     public void process(Player visitor) {
         if (isDebtor(visitor)) {
             visitor.reduceBalance(playerDebt);
+            playerDebt = 0;
         } else {
             tryGetCredit(visitor);
         }
     }
 
     public boolean isDebtor(Player player) {
-        if(playerDebt == 0){
-            return false;
-        }
-        else
-            return true;
+        return playerDebt != 0;
     }
 
     public void tryGetCredit(Player visitor) {
@@ -35,16 +35,16 @@ public class Bank {
     }
 
     public void getCredit(Player creditor) {
-        int currentCredit = calculateCredit(creditor);
+        double currentCredit = calculateCredit(creditor);
         creditor.increaseBalance(currentCredit);
         changePlayerDebt(currentCredit);
     }
 
-    private int calculateCredit(Player player) {
+    private double calculateCredit(Player player) {
         return creditCoeff * player.getSpentMoney();
     }
 
-    private void changePlayerDebt(int credit) {
+    private void changePlayerDebt(double credit) {
         playerDebt = credit * debtCoeff;
     }
 

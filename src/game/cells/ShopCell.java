@@ -9,6 +9,7 @@ public class ShopCell extends EmptyCell implements Cell{
 
     public ShopCell(Shop shop){
         localShop = shop;
+        symbol = "S";
     }
 
     @Override

@@ -1,9 +1,9 @@
 package game.cells;
 
-import game.MyRandom;
+import game.utils.MyRandom;
 import game.Player;
 
-public class TaxiCell extends EmptyCell implements Cell{
+public class TaxiCell extends EmptyCell implements Cell {
     private final MyRandom rnd = new MyRandom();
 
     private static final int MIN_STEPS = 3;
@@ -11,19 +11,24 @@ public class TaxiCell extends EmptyCell implements Cell{
 
     private int steps;
 
+    public TaxiCell() {
+        symbol = "T";
+    }
+
+
     @Override
     public void onCellEvent(Player player) {
         generateSteps();
         player.changePosition(steps);
     }
 
-    public void generateSteps(){
+    public void generateSteps() {
         steps = rnd.nextInt(MIN_STEPS, MAX_STEPS);
     }
 
     @Override
     public String getMessage() {
-        return String.format("You are shifted forward by " + steps + " cells");
+        return "You are shifted forward by " + steps + " cells";
     }
 
     @Override

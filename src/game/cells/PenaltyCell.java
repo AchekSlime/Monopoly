@@ -4,10 +4,11 @@ import game.Player;
 import game.map.Position;
 
 public class PenaltyCell extends EmptyCell implements Cell {
-    private int penaltyCoeff;
+    private double penaltyCoeff;
 
-    public void PenaltyCell(int penaltyCoeff){
+    public PenaltyCell(double penaltyCoeff) {
         this.penaltyCoeff = penaltyCoeff;
+        symbol = "%";
     }
 
     @Override

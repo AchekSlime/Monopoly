@@ -4,11 +4,13 @@ import game.Player;
 import game.map.Position;
 
 public interface Cell {
-    public void onCellEvent(Player player);
+    void onCellEvent(Player player);
 
-    public Position getPosition();
+    Position getPosition();
 
-    public String getMessage();
+    void setPosition(Position posion);
 
-    public String helloMessage();
+    String getMessage();
+
+    String helloMessage();
 }

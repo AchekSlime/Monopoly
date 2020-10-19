@@ -9,6 +9,7 @@ public class BankCell extends EmptyCell implements Cell {
 
     public BankCell(Bank gameBank) {
         this.gameBank = gameBank;
+        symbol = "$";
     }
 
     @Override
