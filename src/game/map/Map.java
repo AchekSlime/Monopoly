@@ -1,5 +1,6 @@
 package game.map;
 
+import game.Factory;
 import game.utils.MyRandom;
 import game.cells.*;
 import game.offices.Bank;
@@ -30,14 +31,14 @@ public class Map {
 
     private final WriterReader writerReader;
 
-    public Map(int width, int height, WriterReader writerReader) {
+    public Map(int width, int height) {
         this.width = width;
         this.height = height;
 
         oneRound = width * 2 + (height - 2) * 2;
         field = new ArrayList<>(oneRound);
 
-        this.writerReader = writerReader;
+        this.writerReader = Factory.console;
 
         initBank();
         initPenaltyCoeff();

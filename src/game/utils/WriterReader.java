@@ -20,6 +20,10 @@ public class WriterReader {
     public void writeln(String message) {
         printer.println(message);
     }
+
+    public String read(){
+        return scanner.nextLine();
+    }
 //    public static class Factory {
 //        public static WriterReader createConsoleScanner(){
 //            return new WriterReader(System.in, System.out);
