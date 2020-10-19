@@ -1,25 +1,32 @@
 package game;
 
+import game.map.Map;
+
 public class Player {
-    private Positon currentPosition;
     private int balance;
     private int spentMoney;
     private boolean isBot;
 
-    public void changePosition(int steps){
+    private Map map;
+    private int curIndexOnMap;
+
+    public void changePosition(int steps) {
+        curIndexOnMap = map.getNextIndex(curIndexOnMap, steps);
     }
 
-    public int getBalance(){
+    public int getBalance() {
         return balance;
     }
 
+    public int getIndexOnMap() {
+        return curIndexOnMap;
+    }
 
-
-    public void reduceBalance(int amount){
+    public void reduceBalance(int amount) {
 
     }
 
-    public void increaseBalance(int amount){
+    public void increaseBalance(int amount) {
 
     }
 

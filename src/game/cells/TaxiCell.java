@@ -3,7 +3,7 @@ package game.cells;
 import game.MyRandom;
 import game.Player;
 
-public class TaxiCell implements Cell {
+public class TaxiCell extends EmptyCell implements Cell{
     private final MyRandom rnd = new MyRandom();
 
     private static final int MIN_STEPS = 3;
@@ -23,8 +23,12 @@ public class TaxiCell implements Cell {
 
     @Override
     public String getMessage() {
-        return String.format("You are shifted forward by %d cells", steps);
+        return String.format("You are shifted forward by " + steps + " cells");
     }
 
+    @Override
+    public String helloMessage() {
+        return null;
+    }
 
 }

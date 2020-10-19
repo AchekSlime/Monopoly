@@ -1,10 +1,10 @@
-package game;
+package game.map;
 
-public class Positon {
+public class Position {
     private int x;
     private int y;
 
-    public void Position(int x, int y){
+    public Position(int x, int y){
         this.x = x;
         this.y = y;
     }

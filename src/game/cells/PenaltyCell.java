@@ -1,14 +1,14 @@
 package game.cells;
 
 import game.Player;
+import game.map.Position;
 
-public class PenaltyCell implements Cell {
+public class PenaltyCell extends EmptyCell implements Cell {
     private int penaltyCoeff;
 
     public void PenaltyCell(int penaltyCoeff){
         this.penaltyCoeff = penaltyCoeff;
     }
-
 
     @Override
     public void onCellEvent(Player player) {
@@ -18,5 +18,10 @@ public class PenaltyCell implements Cell {
     @Override
     public String getMessage() {
         return "";
+    }
+
+    @Override
+    public String helloMessage() {
+        return null;
     }
 }
