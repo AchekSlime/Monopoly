@@ -1,6 +1,7 @@
 package game.offices;
 
 import game.Player;
+import game.Printer;
 import game.utils.WriterReader;
 
 public class Bank {
@@ -48,5 +49,7 @@ public class Bank {
         playerDebt = credit * debtCoeff;
     }
 
-
+    public void printCoeffs(){
+        Printer.printBankCoeff(creditCoeff, debtCoeff);
+    }
 }

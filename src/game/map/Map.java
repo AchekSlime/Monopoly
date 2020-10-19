@@ -1,6 +1,7 @@
 package game.map;
 
 import game.Factory;
+import game.Printer;
 import game.utils.MyRandom;
 import game.cells.*;
 import game.offices.Bank;
@@ -153,30 +154,12 @@ public class Map {
     }
 
     public void printMap() {
-        for (int i = 0; i < width; ++i) {
-            writerReader.write(field.get(i).toString());
-            if (i < (width - 1)) {
-                writerReader.write("  ");
-            }
-        }
-
-        writerReader.writeln("");
-
-        for (int i = 0; i < height - 2; ++i) {
-            writerReader.write(field.get(oneRound - 1 - i).toString());
-            writerReader.write((" ").repeat(width * 3 - 4));
-            writerReader.write(field.get(rightTopCorner + 1 + i).toString());
-            writerReader.writeln("");
-        }
-
-        for (int i = 0; i < width; ++i) {
-            writerReader.write(field.get(leftBotCorner - i).toString());
-            if (i < (width - 1)) {
-                writerReader.write("  ");
-            }
-        }
-
+        Printer.printMap(field, width, height);
     }
 
+    public void printCoeffs(){
+        bank.printCoeffs();
+        Printer.printPenaltyCoeff(penaltyCoeff);
+    }
 
 }

@@ -5,6 +5,8 @@ import game.map.Map;
 import game.utils.MyRandom;
 import game.utils.WriterReader;
 
+import java.io.PrintStream;
+
 public class Game {
 
     private final MyRandom rnd = new MyRandom();
@@ -21,8 +23,8 @@ public class Game {
         map = Factory.initMap();
 
         map.printMap();
+        map.printCoeffs();
     }
-
 
 
     public void nextStep(Player currentPLayer) {
