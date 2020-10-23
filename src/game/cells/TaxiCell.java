@@ -13,6 +13,7 @@ public class TaxiCell extends EmptyCell implements Cell {
 
     public TaxiCell() {
         symbol = "T";
+        fullName = "Taxi";
     }
 
 

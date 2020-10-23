@@ -2,9 +2,10 @@ package game.cells;
 
 import game.Player;
 import game.map.Position;
+import game.utils.EmptyBalanceException;
 
 public interface Cell {
-    void onCellEvent(Player player);
+    void onCellEvent(Player player) throws EmptyBalanceException;
 
     Position getPosition();
 
@@ -13,4 +14,6 @@ public interface Cell {
     String getMessage();
 
     String helloMessage();
+
+    String getFullName();
 }

@@ -2,13 +2,15 @@ package game.cells;
 
 import game.Player;
 import game.map.Position;
+import game.utils.EmptyBalanceException;
 
 public class EmptyCell implements Cell{
     protected Position onMapPosition;
     protected String symbol = "E";
+    protected String fullName = "Empty";
 
     @Override
-    public void onCellEvent(Player player) {
+    public void onCellEvent(Player player) throws EmptyBalanceException {
 
     }
 
@@ -30,6 +32,11 @@ public class EmptyCell implements Cell{
     @Override
     public String helloMessage() {
         return "Hello, world!";
+    }
+
+    @Override
+    public String getFullName() {
+        return fullName + "Cell";
     }
 
     @Override

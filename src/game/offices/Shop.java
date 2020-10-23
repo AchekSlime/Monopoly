@@ -1,6 +1,7 @@
 package game.offices;
 
 import game.Player;
+import game.utils.EmptyBalanceException;
 import game.utils.WriterReader;
 
 public class Shop {
@@ -19,7 +20,7 @@ public class Shop {
     }
 
 
-    public void process(Player visitor) {
+    public void process(Player visitor) throws EmptyBalanceException {
         if (owner == null) {
             tryBuyShop(visitor);
         } else {
@@ -31,13 +32,13 @@ public class Shop {
         }
     }
 
-    public void tryBuyShop(Player visitor) {
+    public void tryBuyShop(Player visitor) throws EmptyBalanceException{
         // работа со сканером.
 
         buyShop(visitor);
     }
 
-    public void buyShop(Player buyer) {
+    public void buyShop(Player buyer) throws EmptyBalanceException {
         buyer.reduceBalance(N);
         owner = buyer;
     }
@@ -46,7 +47,7 @@ public class Shop {
         tryUpgradeShop();
     }
 
-    public void processCustomer(Player customer) {
+    public void processCustomer(Player customer) throws EmptyBalanceException {
         customer.reduceBalance(K);
     }
 

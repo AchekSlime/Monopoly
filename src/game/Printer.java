@@ -1,6 +1,8 @@
 package game;
 
 import game.cells.Cell;
+import game.map.Map;
+import game.map.Position;
 import game.offices.Bank;
 import game.utils.WriterReader;
 
@@ -10,12 +12,15 @@ public class Printer {
     public final static WriterReader console = new WriterReader(System.in, System.out);
 
     public static void printBankCoeff(double creditCoeff, double debtCoeff) {
-        console.writeln("creditCoeff = " + creditCoeff);
-        console.writeln("debtCoeff = " + debtCoeff);
+        console.write("creditCoeff = ");
+        console.writeln(creditCoeff);
+        console.write("debtCoeff = ");
+        console.writeln(debtCoeff);
     }
 
     public static void printPenaltyCoeff(double penaltyCoeff) {
-        console.writeln("penaltyCoeff = " + penaltyCoeff);
+        console.write("penaltyCoeff = ");
+        console.writeln(penaltyCoeff);
     }
 
     public static void printMap(List<Cell> field, int width, int height) {
@@ -49,4 +54,13 @@ public class Printer {
 
         console.writeln("");
     }
+
+    public static void printPlayerInfo(int indexOnMap, double balance, Map map, String prefx) {
+        Cell currCell = map.getCellByIndex(indexOnMap);
+        console.writeln(prefx + "Position : " + currCell.getPosition().toString());
+        console.writeln(prefx + "Cell : " + currCell.getFullName());
+        console.write("Balance = ");
+        console.writeln(balance);
+    }
+
 }

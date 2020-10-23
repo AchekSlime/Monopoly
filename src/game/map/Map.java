@@ -14,10 +14,11 @@ import java.util.List;
 public class Map {
     private final MyRandom rnd = new MyRandom();
 
+    private final List<Cell> field;
+
     private final int width;
     private final int height;
     private final int oneRound;
-    private final List<Cell> field;
 
     private int rightTopCorner;
     private int rightBotCorner;
@@ -80,7 +81,7 @@ public class Map {
     }
 
     public void setEmptyCells() {
-        for(int i = 0; i < oneRound; ++i){
+        for (int i = 0; i < oneRound; ++i) {
             field.add(new EmptyCell());
         }
     }
@@ -92,31 +93,31 @@ public class Map {
         field.set(rnd.nextInt(leftBotCorner + 1, oneRound - 1), new BankCell(bank));
     }
 
-    private void initRow(int corner){
+    private void initRow(int corner) {
         setTaxiAndPenaltyCountsBack();
         for (int i = 1; i < width - 1; ++i) {
             fillCell(corner + i);
         }
     }
 
-    private void initColumn(int corner){
+    private void initColumn(int corner) {
         setTaxiAndPenaltyCountsBack();
         for (int i = 1; i < height - 1; ++i) {
             fillCell(corner + i);
         }
     }
 
-    private void setTaxiAndPenaltyCountsBack(){
+    private void setTaxiAndPenaltyCountsBack() {
         penaltyCount = 2;
         taxiCount = 2;
     }
 
     private void fillCell(int index) {
         if (field.get(index).getClass() == EmptyCell.class) {
-            if (rnd.nextInt(0, 1) == 1 && penaltyCount > 0) {
+            if (rnd.nextBoolean() && penaltyCount > 0) {
                 field.set(index, new PenaltyCell(penaltyCoeff));
                 penaltyCount--;
-            } else if (rnd.nextInt(0, 1) == 1 && taxiCount > 0) {
+            } else if (rnd.nextBoolean() && taxiCount > 0) {
                 field.set(index, new TaxiCell());
                 taxiCount--;
             } else {
@@ -157,7 +158,7 @@ public class Map {
         Printer.printMap(field, width, height);
     }
 
-    public void printCoeffs(){
+    public void printCoeffs() {
         bank.printCoeffs();
         Printer.printPenaltyCoeff(penaltyCoeff);
     }

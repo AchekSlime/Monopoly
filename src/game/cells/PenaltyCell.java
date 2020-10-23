@@ -1,7 +1,7 @@
 package game.cells;
 
 import game.Player;
-import game.map.Position;
+import game.utils.EmptyBalanceException;
 
 public class PenaltyCell extends EmptyCell implements Cell {
     private double penaltyCoeff;
@@ -9,10 +9,11 @@ public class PenaltyCell extends EmptyCell implements Cell {
     public PenaltyCell(double penaltyCoeff) {
         this.penaltyCoeff = penaltyCoeff;
         symbol = "%";
+        fullName = "penalty";
     }
 
     @Override
-    public void onCellEvent(Player player) {
+    public void onCellEvent(Player player) throws EmptyBalanceException {
         player.reduceBalance(penaltyCoeff * player.getBalance());
     }
 

@@ -3,6 +3,7 @@ package game.cells;
 import game.map.Position;
 import game.offices.Bank;
 import game.Player;
+import game.utils.EmptyBalanceException;
 
 public class BankCell extends EmptyCell implements Cell {
     private final Bank gameBank;
@@ -10,10 +11,11 @@ public class BankCell extends EmptyCell implements Cell {
     public BankCell(Bank gameBank) {
         this.gameBank = gameBank;
         symbol = "$";
+        fullName = "Bank";
     }
 
     @Override
-    public void onCellEvent(Player player) {
+    public void onCellEvent(Player player) throws EmptyBalanceException {
         if (!player.isBot()) {
             gameBank.process(player);
         }

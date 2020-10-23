@@ -2,6 +2,7 @@ package game.offices;
 
 import game.Player;
 import game.Printer;
+import game.utils.EmptyBalanceException;
 import game.utils.WriterReader;
 
 public class Bank {
@@ -16,7 +17,7 @@ public class Bank {
         this.writerReader = writerReader;
     }
 
-    public void process(Player visitor) {
+    public void process(Player visitor) throws EmptyBalanceException {
         if (isDebtor(visitor)) {
             visitor.reduceBalance(playerDebt);
             playerDebt = 0;
